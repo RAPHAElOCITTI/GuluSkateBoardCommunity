@@ -3,16 +3,19 @@
 <head>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=alfa-slab-one:400" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gulu Skateboard Community - Empowering Youth Through Skateboarding</title>
     <meta name="description" content="Gulu Skateboard Community empowers youth in Northern Uganda through skateboarding, providing positive alternatives and building resilience.">
-    
+   <!-- 
     <style>
         :root {
             --color-dark: #1a1a1a;
-            --color-light: #ffffff;
-            --color-primary: #FFCE00;
+            --color-light: beige;
+            --color-primary: Black;
             --color-accent: #F2545B;
             --color-gray: #666666;
             --color-light-gray: #f8f9fa;
@@ -33,7 +36,7 @@
         }
 
         body {
-            font-family: var(--font-primary);
+            font-family: 'designerregular', sans-serif;
             line-height: 1.6;
             color: var(--color-dark);
             background: var(--color-light);
@@ -44,6 +47,11 @@
             max-width: var(--max-width);
             margin: 0 auto;
             padding: 0 var(--spacing-md);
+        }
+
+        h1 {
+            font-family: 'designerregular', sans-serif;
+            font-weight: 700;
         }
 
         /* Typography */
@@ -208,11 +216,12 @@
 }
 
 .hero-title {
-    font-family: 'Alfa Slab One', sans-serif; /* Added Alfa Slab One */
-    font-weight: 400; /* Alfa Slab One typically has only one weight */
+    font-family: 'designerregular', sans-serif; /* Using custom font from assets/fonts */
+    font-weight: 700;
     margin-bottom: var(--spacing-md);
-    color: var(--color-light);
+    color: var(--color-accent);
     font-size: clamp(2.5rem, 5vw, 4rem);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
@@ -390,7 +399,7 @@
         }
 
         .merch-price {
-            color: var(--color-primary);
+            color: var(--color-accent);
             font-weight: 600;
         }
 
@@ -407,7 +416,7 @@
     font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--color-primary), #ffd700);
+    background: var(--color-accent);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -757,15 +766,15 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--color-primary), #ffd700);
+    background: var(--color-primary);
     color: var(--color-dark);
     border-color: var(--color-primary);
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, #e6b800, #ffcc00);
+    background: linear-gradient(135deg, #e8e4d3, #dbd7ca);
     transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(255, 204, 0, 0.4);
+   
 }
 
 /* Responsive Enhancements */
@@ -1377,6 +1386,7 @@
             transform: translateY(0);
         }
     </style>
+    -->
 </head>
 <body>
     <!-- Header -->
@@ -1397,6 +1407,7 @@
                     <li><a href="#" onclick="showPage('impact')" class="nav-link">Impact</a></li>
                     <li><a href="#" onclick="showPage('support')" class="nav-link">Support</a></li>
                     <li><a href="#" onclick="showPage('contact')" class="nav-link">Contact</a></li>
+                    <li><a href="admin.html" class="nav-link">Admin</a></li>
                 </ul>
                 <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
                     <span></span>
@@ -1467,17 +1478,23 @@
                     </div>
                     <div class="grid grid-3">
                         <div class="card fade-up">
-                            <div class="card-icon">🛹</div>
+                            <div class="card-image-container">
+                                <img src="assets/img/free-skate-session.jpeg" alt="Free Skate Sessions">
+                            </div>
                             <h3>Free Skate Sessions</h3>
                             <p>Regular skateboarding lessons and practice sessions open to all youth in the community, regardless of skill level or background.</p>
                         </div>
                         <div class="card fade-up">
-                            <div class="card-icon">🎓</div>
+                            <div class="card-image-container">
+                                <img src="assets/img/learn-to-skate.jpeg" alt="Skate for School">
+                            </div>
                             <h3>Skate for School</h3>
                             <p>Linking skateboarding participation to educational support, providing school materials and fees for dedicated participants.</p>
                         </div>
                         <div class="card fade-up">
-                            <div class="card-icon">🤝</div>
+                            <div class="card-image-container">
+                                <img src="assets/img/community-events.jpg" alt="Community Events">
+                            </div>
                             <h3>Community Events</h3>
                             <p>Organizing competitions, jams, and community gatherings that bring people together and showcase local talent.</p>
                         </div>
@@ -1560,7 +1577,7 @@
                 </div>
                 <div style="margin-top: var(--spacing-sm);">
                     <h3>Construction of the first skatepark in Northern Uganda</h3>
-                    <p style="color: var(--color-gray); font-size: 0.875rem;">Gulu skateboard community • 2024 • 237 views</p>
+                    <p style="color: var(--color-gray); font-size: 0.875rem;">Gulu skateboard community • 2024</p>
                 </div>
             </div>
         </section>
@@ -1578,6 +1595,53 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Blog Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Blog & News</h2>
+                    <p class="section-subtitle">Updates from our community</p>
+                </div>
+                
+                <div class="grid grid-3" id="blog-posts-container">
+                    <!-- Blog posts will be loaded here -->
+                    <div class="card blog-post">
+                        <div class="card-image-container">
+                            <img src="assets/img/person.jpeg" alt="Blog post featured image">
+                        </div>
+                        <p class="post-date">June 10, 2025</p>
+                        <h3>Our First Skatepark Build Has Begun!</h3>
+                        <p>After years of planning and fundraising, construction has finally begun on the first skatepark in Northern Uganda...</p>
+                        <a href="#" class="read-more-link">Read More</a>
+                    </div>
+                    
+                    <div class="card blog-post">
+                        <div class="card-image-container">
+                            <img src="assets/img/3.jpeg" alt="Blog post featured image">
+                        </div>
+                        <p class="post-date">May 28, 2025</p>
+                        <h3>Community Competition Highlights</h3>
+                        <p>Our recent skateboarding competition brought together over 50 participants from across the region, showcasing incredible talent...</p>
+                        <a href="#" class="read-more-link">Read More</a>
+                    </div>
+                    
+                    <div class="card blog-post">
+                        <div class="card-image-container">
+                            <img src="assets/img/4.jpeg" alt="Blog post featured image">
+                        </div>
+                        <p class="post-date">May 15, 2025</p>
+                        <h3>New Equipment Arrives for Youth Program</h3>
+                        <p>Thanks to our generous donors, we've received a shipment of new skateboards and safety equipment for our youth programs...</p>
+                        <a href="#" class="read-more-link">Read More</a>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="#" class="btn btn-primary" id="view-all-posts-btn">View All Posts</a>
+                </div>
+            </div>
+        </section>
     </div>
         <div id="programs-page" class="page page-hidden">
     <section class="section">
@@ -1587,54 +1651,62 @@
                 <p class="section-subtitle">Creating pathways from the skatepark to the classroom and beyond</p>
             </div>
 
-            <div class="grid grid-2">
-                <div class="card">
-                    <div class="card-image-container">
+            <div class="programs-container">
+                <div class="program-item">
+                    <div class="program-image">
                         <img src="assets/img/free-skate-session.jpeg" alt="Youth enjoying free skate sessions">
                     </div>
-                    <h3>Free Skate Sessions</h3>
-                    <p>Regular skateboarding lessons and practice sessions open to all youth in the community. We provide boards, safety equipment, and expert instruction.</p>
+                    <div class="program-content">
+                        <h3>Free Skate Sessions</h3>
+                        <p>Regular skateboarding lessons and practice sessions open to all youth in the community. We provide boards, safety equipment, and expert instruction to create a safe, supportive environment for skaters of all skill levels.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-image-container">
+                <div class="program-item">
+                    <div class="program-image">
                         <img src="assets/img/learn-to-skate.jpeg" alt="Kids learning to skate">
                     </div>
-                    <h3>Learn to Skate Programs</h3>
-                    <p>Structured beginner programs focused on building confidence, basic skills, and safety awareness. Perfect for newcomers to skateboarding culture.</p>
+                    <div class="program-content">
+                        <h3>Learn to Skate Programs</h3>
+                        <p>Structured beginner programs focused on building confidence, basic skills, and safety awareness. Perfect for newcomers to skateboarding culture, our learn-to-skate program provides step-by-step guidance to help youth develop their abilities.</p>
+                    </div>
                 </div>
 
-            
-
-                <div class="card">
-                    <div class="card-image-container">
+                <div class="program-item">
+                    <div class="program-image">
                         <img src="assets/img/com.jpeg" alt="Skateboard competition crowd">
                     </div>
-                    <h3>Community Events & Competitions</h3>
-                    <p>Regular competitions, jams, and community gatherings that showcase talent, build community spirit, and celebrate our skateboarding culture.</p>
+                    <div class="program-content">
+                        <h3>Community Events & Competitions</h3>
+                        <p>Regular competitions, jams, and community gatherings that showcase talent, build community spirit, and celebrate our skateboarding culture. These events bring together skaters from different backgrounds and skill levels to share their passion.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-image-container">
+                <div class="program-item">
+                    <div class="program-image">
                         <img src="assets/img/youth.jpg" alt="Skater mentoring a young child">
                     </div>
-                    <h3>Youth Mentorship</h3>
-                    <p>Pairing experienced skaters with newcomers, developing leadership skills and creating positive role models within the community.</p>
+                    <div class="program-content">
+                        <h3>Youth Mentorship</h3>
+                        <p>Pairing experienced skaters with newcomers, developing leadership skills and creating positive role models within the community. Our mentorship program fosters personal growth and helps build a supportive network for youth facing challenges.</p>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-image-container">
+                <div class="program-item">
+                    <div class="program-image">
                         <img src="assets/img/community-events.jpg" alt="Render of a new skatepark">
                     </div>
-                    <h3>Future Skatepark Project</h3>
-                    <p>Working toward building Northern Uganda's first public skatepark - a dedicated, safe space for the community to grow and thrive.</p>
+                    <div class="program-content">
+                        <h3>Future Skatepark Project</h3>
+                        <p>Working toward building Northern Uganda's first public skatepark - a dedicated, safe space for the community to grow and thrive. This ambitious project will provide a permanent home for our programs and create new opportunities for youth.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 </div>
 
-        <!-- GALLERY PAGE -->
+        <!-- GALLERY PAGE with Instagram-style Grid -->
         <div id="gallery-page" class="page page-hidden">
             <section class="section">
                 <div class="container">
@@ -1643,34 +1715,52 @@
                         <p class="section-subtitle">Witness the transformation - see how skateboarding is changing lives in Gulu</p>
                     </div>
                     
-<div class="grid grid-3">
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/person.jpeg" alt="Youth skateboarding action shot">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/2.jpeg" alt="Community event group photo">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/3.jpeg" alt="Skateboarding video thumbnail">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/free-skate-session.jpeg" alt="Skateboarding learning session photo">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/4.jpeg" alt="Skateboarding competition moment">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/5.jpeg" alt="Community celebration photo">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/6.jpeg" alt="Skateboarding competition moment">
-    </div>
-    <div class="image-placeholder" style="height: 200px;">
-        <img src="assets/img/learn-to-skate.jpeg" alt="Skateboarding competition moment">
-    </div>
-
-
-</div>
+                    <div class="gallery-container">
+                        <div class="gallery-item">
+                            <img data-src="assets/img/person.jpeg" alt="Youth skateboarding action shot" class="lazy-load">
+                            <div class="gallery-caption">Youth skateboarding action shot</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/2.jpeg" alt="Community event group photo" class="lazy-load">
+                            <div class="gallery-caption">Community event group photo</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/3.jpeg" alt="Skateboarding video thumbnail" class="lazy-load">
+                            <div class="gallery-caption">Skateboarding skills showcase</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/free-skate-session.jpeg" alt="Skateboarding learning session photo" class="lazy-load">
+                            <div class="gallery-caption">Free skate session</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/4.jpeg" alt="Skateboarding competition moment" class="lazy-load">
+                            <div class="gallery-caption">Competition highlights</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/5.jpeg" alt="Community celebration photo" class="lazy-load">
+                            <div class="gallery-caption">Community celebration</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/6.jpeg" alt="Skateboarding competition moment" class="lazy-load">
+                            <div class="gallery-caption">Youth talent on display</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/learn-to-skate.jpeg" alt="Skateboarding learning session" class="lazy-load">
+                            <div class="gallery-caption">Learn to skate program</div>
+                        </div>
+                        
+                        <div class="gallery-item">
+                            <img data-src="assets/img/community-events.jpg" alt="Community gathering" class="lazy-load">
+                            <div class="gallery-caption">Community gathering</div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -1678,96 +1768,112 @@
         <!-- IMPACT PAGE -->
         <!-- IMPACT PAGE -->
         <div id="impact-page" class="page page-hidden">
-            <section class="section" style="padding-top: 120px;">
+            <section class="section" style="padding-top: 80px;">
                 <div class="container">
-                    <h1 class="section-title">Our Impact</h1>
-                    <p class="section-subtitle">Creating visible, positive change in Northern Uganda</p>
+                    <div class="section-header">
+                        <h1 class="section-title">Our Impact</h1>
+                        <p class="section-subtitle">Creating visible, positive change in Northern Uganda</p>
+                    </div>
                     
-                    <!-- Success Stories -->
-                    <div style="margin-bottom: 80px;">
-                        <h2 style="text-align: center; font-family: var(--font-heading); font-size: 2rem; margin-bottom: 50px;">Success Stories</h2>
-                        <div class="grid grid-2">
-                            <div class="card">
-                                <div class="image-placeholder" style="height: 200px; margin-bottom: 20px;">
-                                    <!-- INSERT SUCCESS STORY PHOTO 1 HERE -->
-                                        <img src="assets/img/person.jpeg" alt="Youth skateboarding action shot">
+                    <!-- Success Stories with larger images -->
+                    <div class="impact-section">
+                        <h2 class="impact-heading">Success Stories</h2>
+                        
+                        <div class="impact-stories">
+                            <div class="impact-story">
+                                <div class="impact-story-image">
+                                    <img src="assets/img/person.jpeg" alt="Youth skateboarding action shot">
                                 </div>
-                                <h3>From Streets to Success</h3>
-                                <p><em>"Before GSC, I was hanging with the wrong crowd. Skateboarding gave me focus and friends who actually care about my future. Now I'm back in school and teaching younger kids to skate."</em></p>
-                                <p><strong>- James, Age 17</strong></p>
+                                <div class="impact-story-content">
+                                    <h3>From Streets to Success</h3>
+                                    <p class="impact-quote"><em>"Before GSC, I was hanging with the wrong crowd. Skateboarding gave me focus and friends who actually care about my future. Now I'm back in school and teaching younger kids to skate."</em></p>
+                                    <p class="impact-person"><strong>- James, Age 17</strong></p>
+                                </div>
                             </div>
-                            <div class="card">
-                                <div class="image-placeholder" style="height: 200px; margin-bottom: 20px;">
-                                    <!-- INSERT SUCCESS STORY PHOTO 2 HERE -->
-                                            <img src="assets/img/2.jpeg" alt="Community event group photo">
-
+                            
+                            <div class="impact-story">
+                                <div class="impact-story-image">
+                                    <img src="assets/img/2.jpeg" alt="Community event group photo">
                                 </div>
-                                <h3>Building Confidence</h3>
-                                <p><em>"I was very shy before joining GSC. Through skateboarding, I learned to overcome fear and believe in myself. Now I'm a peer mentor and help organize our community events."</em></p>
-                                <p><strong>- Sarah, Age 16</strong></p>
+                                <div class="impact-story-content">
+                                    <h3>Building Confidence</h3>
+                                    <p class="impact-quote"><em>"I was very shy before joining GSC. Through skateboarding, I learned to overcome fear and believe in myself. Now I'm a peer mentor and help organize our community events."</em></p>
+                                    <p class="impact-person"><strong>- Sarah, Age 16</strong></p>
+                                </div>
                             </div>
-                            <div class="card">
-                                <div class="image-placeholder" style="height: 200px; margin-bottom: 20px;">
-                                    <!-- INSERT SUCCESS STORY PHOTO 3 HERE -->
-                                            <img src="assets/img/6.jpeg" alt="Community event group photo">
-
+                            
+                            <div class="impact-story">
+                                <div class="impact-story-image">
+                                    <img src="assets/img/6.jpeg" alt="Community event group photo">
                                 </div>
-                                <h3>Community Leader</h3>
-                                <p><em>"GSC taught me that falling down isn't failing - it's learning. This mindset helped me in school and life. I'm now studying at university and plan to return to help grow the community."</em></p>
-                                <p><strong>- David, Age 20</strong></p>
+                                <div class="impact-story-content">
+                                    <h3>Community Leader</h3>
+                                    <p class="impact-quote"><em>"GSC taught me that falling down isn't failing - it's learning. This mindset helped me in school and life. I'm now studying at university and plan to return to help grow the community."</em></p>
+                                    <p class="impact-person"><strong>- David, Age 20</strong></p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Impact Numbers -->
-                    <div style="background: var(--color-light-gray); padding: 60px; border-radius: 12px; margin-bottom: 60px;">
-                        <h2 style="text-align: center; font-family: var(--font-heading); font-size: 2rem; margin-bottom: 40px;">By The Numbers</h2>
-                        <div class="stats-grid">
-                            <div class="stat-card">
-                                <span class="stat-number">200+</span>
-                                <span>Youth Engaged Annually</span>
+                    <div class="impact-stats-section">
+                        <h2 class="impact-heading">By The Numbers</h2>
+                        
+                        <div class="impact-stats">
+                            <div class="impact-stat">
+                                <div class="impact-stat-number">200+</div>
+                                <div class="impact-stat-label">Youth Engaged Annually</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-number">85%</span>
-                                <span>Stayed in School</span>
+                            
+                            <div class="impact-stat">
+                                <div class="impact-stat-number">85%</div>
+                                <div class="impact-stat-label">Stayed in School</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-number">50+</span>
-                                <span>Community Events</span>
+                            
+                            <div class="impact-stat">
+                                <div class="impact-stat-number">50+</div>
+                                <div class="impact-stat-label">Community Events</div>
                             </div>
-                            <div class="stat-card">
-                                <span class="stat-number">30+</span>
-                                <span>Peer Mentors Trained</span>
+                            
+                            <div class="impact-stat">
+                                <div class="impact-stat-number">30+</div>
+                                <div class="impact-stat-label">Peer Mentors Trained</div>
                             </div>
                         </div>
                     </div>
 
                     <!-- What We're Creating -->
-                    <div>
-                        <h2 style="text-align: center; font-family: var(--font-heading); font-size: 2rem; margin-bottom: 40px;">What We're Creating</h2>
-                        <div class="grid grid-2">
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">✨ Tangible Alternatives</h3>
+                    <div class="impact-outcomes-section">
+                        <h2 class="impact-heading">What We're Creating</h2>
+                        
+                        <div class="impact-outcomes">
+                            <div class="impact-outcome">
+                                <h3>✨ Tangible Alternatives</h3>
                                 <p>Providing positive outlets that directly compete with negative influences and idle time.</p>
                             </div>
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">💪 Improved Well-being</h3>
+                            
+                            <div class="impact-outcome">
+                                <h3>💪 Improved Well-being</h3>
                                 <p>Better mental and physical health outcomes for all participants through active engagement.</p>
                             </div>
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">🎯 Pride & Identity</h3>
+                            
+                            <div class="impact-outcome">
+                                <h3>🎯 Pride & Identity</h3>
                                 <p>Growing sense of belonging and positive self-identity among local youth.</p>
                             </div>
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">🚀 Skill Development</h3>
+                            
+                            <div class="impact-outcome">
+                                <h3>🚀 Skill Development</h3>
                                 <p>Platform for building confidence, resilience, and leadership capabilities.</p>
                             </div>
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">🌍 Community Model</h3>
+                            
+                            <div class="impact-outcome">
+                                <h3>🌍 Community Model</h3>
                                 <p>Demonstrating effective community-led youth empowerment strategies.</p>
                             </div>
-                            <div>
-                                <h3 style="color: var(--color-primary); margin-bottom: 15px;">🔄 Social Transformation</h3>
+                            
+                            <div class="impact-outcome">
+                                <h3>🔄 Social Transformation</h3>
                                 <p>Rebuilding social fabric through shared experiences and mutual support.</p>
                             </div>
                         </div>
@@ -1847,7 +1953,17 @@
                 <h3 style="margin-bottom: 20px;">📢 Spread the Word</h3>
                 <p style="margin-bottom: 30px;">Help us reach more supporters by sharing our mission on social media and within your networks.</p>
                 <div class="image-placeholder" style="height: 60px; margin: 0 auto; max-width: 400px;">
-                    SOCIAL MEDIA SHARE BUTTONS<br>(Facebook, Instagram, Twitter, LinkedIn)
+                    <div class="social-links">
+                            <a href="https://www.instagram.com/guluskateboardcommunity/" class="social-link" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/256770686665" class="social-link" target="_blank" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@guluskateboardcommunity727" class="social-link" target="_blank" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
                 </div>
             </div>
         </div>
@@ -1929,96 +2045,109 @@
     </section>
 </div>
 
-        <!-- ENHANCED CONTACT PAGE -->
+        <!-- CLEAN, MODERN CONTACT PAGE -->
 <div id="contact-page" class="page page-hidden">
-    <section class="section" style="padding-top: 120px;">
+    <section class="section" style="padding-top: 80px;">
         <div class="container">
             <h1 class="section-title">Get In Touch</h1>
             <p class="section-subtitle">Ready to join our movement? We'd love to hear from you!</p>
             
-            <div class="grid grid-2">
-                <!-- Enhanced Contact Form -->
-                <div>
-                    <form class="contact-form">
-                        <h3>Send Us a Message</h3>
+            <div class="contact-container">
+                <!-- Clean, Minimal Contact Form -->
+                <div class="contact-form-container">
+                    <form class="contact-form" action="https://formspree.io/f/nellyumar@outlook.com" method="POST">
+                        <h3>Send a Message</h3>
                         
                         <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your name" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address *</label>
+                            <label for="email">Email</label>
                             <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+256 XXX XXX XXX">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Subject *</label>
+                            <label for="subject">Subject</label>
                             <select id="subject" name="subject" required>
                                 <option value="">Select a topic...</option>
-                                <option value="volunteer">🤝 Volunteer Opportunities</option>
-                                <option value="donate">💰 Donations & Support</option>
-                                <option value="partner">🤝 Partnership Inquiry</option>
-                                <option value="media">📺 Media & Press</option>
-                                <option value="general">💬 General Inquiry</option>
+                                <option value="volunteer">Volunteer Opportunities</option>
+                                <option value="donate">Donations & Support</option>
+                                <option value="partner">Partnership Inquiry</option>
+                                <option value="media">Media & Press</option>
+                                <option value="general">General Inquiry</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your interest in GSC..." required></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Your message here..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="cta-button">Send Message</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
 
-                <!-- Enhanced Contact Information -->
-                <div class="contact-info-section">
+                <!-- Clean, Modern Contact Information -->
+                <div class="contact-info-container">
                     <h3>Contact Information</h3>
                     
-                    <div class="card">
-                        <h4>📧 Email</h4>
-                        <p><strong>info@guluskateboardcommunity.org</strong></p>
-                        <p><strong>founder@guluskateboardcommunity.org</strong></p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">We typically respond within 24 hours</p>
+                    <div class="contact-info-items">
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p><a href="mailto:nellyumar@outlook.com">nellyumar@outlook.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p><a href="tel:+256770686665">+256 770 686665</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>WhatsApp</h4>
+                                <p><a href="https://wa.me/256770686665" target="_blank">+256 770 686665</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Gulu, Northern Uganda</p>
+                                <p><a href="https://www.google.com/maps?q=2.771961,32.293631" target="_blank" class="map-link">View on map</a></p>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="card">
-                        <h4>📱 Phone</h4>
-                        <p><strong>+256 XXX XXX XXX</strong></p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">Available Mon-Fri, 9AM-5PM EAT</p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">WhatsApp messages welcome</p>
-                    </div>
-
-                    <div class="card">
-                        <h4>📍 Location</h4>
-                        <p><strong>Gulu, Northern Region</strong><br>Uganda</p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">
-                            Meeting point details provided upon contact
-                        </p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">
-                            Community sessions every weekend
-                        </p>
-                        <p style="color: var(--color-gray); font-size: 0.9rem;">
-                            <a href="https://www.google.com/maps?q=2.771961,32.293631" target="_blank" rel="noopener noreferrer">
-                                📌 View exact location on Google Maps
+                    
+                    <div class="social-media-container">
+                        <h4>Connect With Us</h4>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/guluskateboardcommunity/" class="social-link" target="_blank" title="Instagram">
+                                <i class="fab fa-instagram"></i>
                             </a>
-                        </p>
-                    </div>
-
-
-                    <div class="card social-media-card">
-                        <h4>🌐 Follow Us</h4>
-                        <p style="margin-bottom: 1rem;">Stay connected with our community</p>
-                        <div class="image-placeholder">
-                            SOCIAL MEDIA LINKS<br>
-                            <small>(Instagram, Facebook, YouTube)</small>
+                            <a href="https://wa.me/256770686665" class="social-link" target="_blank" title="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@guluskateboardcommunity727" class="social-link" target="_blank" title="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -2033,13 +2162,12 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
-                        <div class="image-placeholder">
+                        <div class="footer-logo">
                             <img src="assets/img/logo6.png" alt="Gulu Skateboard Community Logo">
                         </div>
-                        <!-- FOOTER_LOGO_PLACEHOLDER -->
-                        <span style="font-family: var(--font-heading); font-weight: 600; color: var(--color-primary);">Gulu Skateboard Community</span>
+                        <span style="font-family: var(--font-heading); font-weight: 600; color: var(--color-light);">Gulu Skateboard Community</span>
                     </div>
-                    <p>Empowering youth in Northern Uganda through skateboarding, building community, resilience, and brighter futures one push at a time.</p>
+                    <p style="color: #cccccc;">Empowering youth in Northern Uganda through skateboarding, building community, resilience, and brighter futures one push at a time.</p>
                 </div>
                 
                 <div class="footer-section">
@@ -2049,32 +2177,40 @@
                         <li><a href="#" onclick="showPage('programs')">Our Programs</a></li>
                         <li><a href="#" onclick="showPage('impact')">Our Impact</a></li>
                         <li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+                        <li><a href="#" onclick="showPage('support')">Support Us</a></li>
+                        <li><a href="admin.html">Admin</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Get Involved</h4>
-                    <ul>
-                        <li><a href="#" onclick="showPage('support')">Donate</a></li>
-                        <li><a href="#" onclick="showPage('support')">Volunteer</a></li>
-                        <li><a href="#" onclick="showPage('support')">Partner With Us</a></li>
-                        <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+                    <h4>Contact Us</h4>
+                    <ul class="footer-contact-list">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:nellyumar@outlook.com">nellyumar@outlook.com</a></li>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+256770686665">+256 770 686665</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/256770686665">WhatsApp</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> Gulu, Northern Uganda</li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="image-placeholder" style="height: 80px; margin-bottom: 20px;">
-                        <!-- INSERT SOCIAL MEDIA ICONS HERE -->
-                        SOCIAL MEDIA<br>ICON LINKS
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/guluskateboardcommunity/" class="social-link" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/256770686665" class="social-link" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@guluskateboardcommunity727" class="social-link" target="_blank" title="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
                     </div>
-                    <p>Gulu, Northern Uganda<br>
-                    Email: info@guluskateboardcommunity.org</p>
+                    <p class="footer-tagline">Join our movement and be part of the change!</p>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 Gulu Skateboard Community. All rights reserved. | Building futures through skateboarding since 2013.</p>
+                <p>&copy; 2025 Gulu Skateboard Community. All rights reserved. | Building futures through skateboarding since 2013.</p>
             </div>
         </div>
     </footer>
@@ -2240,9 +2376,9 @@
             const contactForm = document.querySelector('.contact-form');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    alert('Thank you for your message! We will get back to you soon.');
-                    this.reset();
+                    // Allow the form to submit to formspree
+                    // No need to prevent default
+                    // Form will redirect to formspree
                 });
             }
             
@@ -2260,6 +2396,30 @@
                     header.style.backdropFilter = 'none';
                 }
             });
+            
+            // Blog functionality for admin
+            // This is a simplified version for demo purposes
+            // In a real application, this would fetch data from a backend
+            const blogPostsContainer = document.getElementById('blog-posts-container');
+            const viewAllPostsBtn = document.getElementById('view-all-posts-btn');
+            
+            if (viewAllPostsBtn) {
+                viewAllPostsBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('In a real implementation, this would show more blog posts.');
+                });
+            }
+            
+            // Function to check for admin login
+            const adminCheck = () => {
+                const adminParam = new URLSearchParams(window.location.search).get('admin');
+                if (adminParam === 'login') {
+                    window.location.href = 'admin.html';
+                }
+            };
+            
+            // Check if admin parameter is present
+            adminCheck();
         });
         
         // Close mobile menu when clicking outside
@@ -2285,6 +2445,110 @@
                     });
                 }
             });
+        });
+        
+        // Lazy Loading for Images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('img[data-src]');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                let lazyLoadThrottleTimeout;
+                
+                function lazyLoad() {
+                    if (lazyLoadThrottleTimeout) {
+                        clearTimeout(lazyLoadThrottleTimeout);
+                    }
+                    
+                    lazyLoadThrottleTimeout = setTimeout(function() {
+                        const scrollTop = window.pageYOffset;
+                        lazyImages.forEach(function(img) {
+                            if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                                img.src = img.dataset.src;
+                                img.removeAttribute('data-src');
+                            }
+                        });
+                        
+                        if (lazyImages.length == 0) {
+                            document.removeEventListener('scroll', lazyLoad);
+                            window.removeEventListener('resize', lazyLoad);
+                            window.removeEventListener('orientationChange', lazyLoad);
+                        }
+                    }, 20);
+                }
+                
+                document.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                window.addEventListener('orientationChange', lazyLoad);
+                lazyLoad();
+            }
+        });
+
+        // Lazy Loading for Gallery Images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy-load');
+                            img.classList.add('lazy-loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => {
+                    imageObserver.observe(img);
+                });
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                let lazyLoadThrottleTimeout;
+                
+                function lazyLoad() {
+                    if (lazyLoadThrottleTimeout) {
+                        clearTimeout(lazyLoadThrottleTimeout);
+                    }
+                    
+                    lazyLoadThrottleTimeout = setTimeout(function() {
+                        const scrollTop = window.pageYOffset;
+                        lazyImages.forEach(function(img) {
+                            if (img.offsetTop < (window.innerHeight + scrollTop)) {
+                                img.src = img.dataset.src;
+                                img.classList.remove('lazy-load');
+                                img.classList.add('lazy-loaded');
+                            }
+                        });
+                        if (lazyImages.length == 0) {
+                            document.removeEventListener('scroll', lazyLoad);
+                            window.removeEventListener('resize', lazyLoad);
+                            window.removeEventListener('orientationChange', lazyLoad);
+                        }
+                    }, 20);
+                }
+                
+                document.addEventListener('scroll', lazyLoad);
+                window.addEventListener('resize', lazyLoad);
+                window.addEventListener('orientationChange', lazyLoad);
+            }
         });
     </script>
 </body>

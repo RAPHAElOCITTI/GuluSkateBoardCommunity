@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=alfa-slab-one:400" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Gulu Skateboard Community</title>
+    <meta name="description" content="Admin dashboard for Gulu Skateboard Community website management.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        :root {
+            --admin-primary: #2c3e50;
+            --admin-secondary: #34495e;
+            --admin-accent: #F2545B;
+            --admin-success: #27ae60;
+            --admin-warning: #f39c12;
+            --admin-danger: #e74c3c;
+            --admin-light: #ecf0f1;
+            --admin-dark: #2c3e50;
+            --admin-gray: #95a5a6;
+        }
+        
+        body {
+            background: var(--admin-light);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            background: var(--admin-primary);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .admin-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+        }
+        
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .admin-user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--admin-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        
+        .admin-sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 250px;
+            position: fixed;
+            top: 110px;
+            bottom: 20px;
+            overflow-y: auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .admin-sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .admin-sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            color: var(--admin-dark);
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        
+        .admin-sidebar-menu a:hover, 
+        .admin-sidebar-menu a.active {
+            background: var(--admin-light);
+            color: var(--admin-primary);
+        }
+        
+        .admin-sidebar-menu i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .admin-content {
+            margin-left: 280px;
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            min-height: calc(100vh - 170px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--admin-light);
+        }
+        
+        .admin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 6px;
+            background: var(--admin-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .admin-btn:hover {
+            background: var(--admin-secondary);
+            transform: translateY(-2px);
+        }
+        
+        .admin-btn-success {
+            background: var(--admin-success);
+        }
+        
+        .admin-btn-success:hover {
+            background: #219a52;
+        }
+        
+        .admin-btn-danger {
+            background: var(--admin-danger);
+        }
+        
+        .admin-btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .admin-table th, 
+        .admin-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--admin-light);
+        }
+        
+        .admin-table th {
+            font-weight: 600;
+            color: var(--admin-dark);
+            background: #f8f9fa;
+        }
+        
+        .admin-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .admin-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .admin-badge-success {
+            background: #e8f5e9;
+            color: var(--admin-success);
+        }
+        
+        .admin-badge-warning {
+            background: #fff8e1;
+            color: var(--admin-warning);
+        }
+        
+        .admin-badge-danger {
+            background: #ffebee;
+            color: var(--admin-danger);
+        }
+        
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .admin-action-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: #f8f9fa;
+            color: var(--admin-dark);
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .admin-action-btn:hover {
+            background: var(--admin-light);
+            color: var(--admin-primary);
+        }
+        
+        .admin-form-group {
+            margin-bottom: 20px;
+        }
+        
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--admin-dark);
+        }
+        
+        .admin-form-group input,
+        .admin-form-group textarea,
+        .admin-form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .admin-form-group input:focus,
+        .admin-form-group textarea:focus,
+        .admin-form-group select:focus {
+            outline: none;
+            border-color: var(--admin-primary);
+            box-shadow: 0 0 0 3px rgba(44, 62, 80, 0.1);
+        }
+        
+        .admin-form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .admin-tab-nav {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--admin-light);
+            padding-bottom: 10px;
+        }
+        
+        .admin-tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-radius: 6px 6px 0 0;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--admin-gray);
+            transition: all 0.2s ease;
+        }
+        
+        .admin-tab-btn.active {
+            color: var(--admin-primary);
+            border-bottom: 2px solid var(--admin-primary);
+        }
+        
+        .admin-tab-btn:hover:not(.active) {
+            color: var(--admin-dark);
+            background: var(--admin-light);
+        }
+        
+        .admin-tab-content {
+            display: none;
+        }
+        
+        .admin-tab-content.active {
+            display: block;
+        }
+        
+        .admin-media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .admin-media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-media-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .admin-media-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .admin-media-item:hover .admin-media-overlay {
+            opacity: 1;
+        }
+        
+        .admin-media-title {
+            padding: 10px;
+            font-size: 14px;
+            background: white;
+            border-top: 1px solid #eee;
+        }
+        
+        .admin-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .admin-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--admin-light);
+        }
+        
+        .admin-login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .admin-login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .admin-login-logo img {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+        }
+        
+        .admin-section {
+            margin-bottom: 40px;
+        }
+        
+        .admin-section-header {
+            margin-bottom: 20px;
+        }
+        
+        .admin-gallery-preview {
+            width: 100%;
+            height: 400px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--admin-gray);
+            margin-bottom: 20px;
+        }
+        
+        .admin-gallery-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 8px;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .admin-sidebar {
+                width: 80px;
+            }
+            
+            .admin-sidebar-menu a span {
+                display: none;
+            }
+            
+            .admin-content {
+                margin-left: 110px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                position: static;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .admin-sidebar-menu {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            
+            .admin-sidebar-menu a {
+                padding: 10px;
+            }
+            
+            .admin-sidebar-menu a span {
+                display: none;
+            }
+            
+            .admin-content {
+                margin-left: 0;
+            }
+            
+            .admin-content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Admin Header -->
+        <header class="admin-header">
+            <div class="admin-logo">
+                <img src="assets/img/logo6.png" alt="Gulu Skateboard Community Logo">
+                <h1>GSC Admin</h1>
+            </div>
+            <div class="admin-user">
+                <div class="admin-user-avatar">A</div>
+                <div class="admin-user-info">
+                    <div class="admin-user-name">Admin</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="admin-login-section" id="admin-login-section">
+            <div class="admin-login-container">
+                <div class="admin-login-logo">
+                    <img src="assets/img/logo6.png" alt="Gulu Skateboard Community Logo">
+                    <h2>Admin Login</h2>
+                </div>
+                
+                <form id="admin-login-form">
+                    <div class="admin-form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    
+                    <div class="admin-form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    
+                    <button type="submit" class="admin-btn" style="width: 100%;">Login</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="admin-main-section" id="admin-main-section" style="display: none;">
+            <!-- Admin Sidebar -->
+            <div class="admin-sidebar">
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="#dashboard" class="admin-nav-link active" data-target="dashboard-content">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#blog" class="admin-nav-link" data-target="blog-content">
+                            <i class="fas fa-blog"></i>
+                            <span>Blog</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gallery" class="admin-nav-link" data-target="gallery-content">
+                            <i class="fas fa-images"></i>
+                            <span>Gallery</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#programs" class="admin-nav-link" data-target="programs-content">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Programs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#impact" class="admin-nav-link" data-target="impact-content">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Impact</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings" class="admin-nav-link" data-target="settings-content">
+                            <i class="fas fa-cogs"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Admin Content -->
+            <div class="admin-content">
+                <!-- Dashboard Content -->
+                <div class="admin-tab-content active" id="dashboard-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-tachometer-alt"></i> Dashboard</h2>
+                        <div>
+                            <span>Welcome back, Admin!</span>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <div class="admin-section-header">
+                            <h3>Website Overview</h3>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                            <div class="admin-card">
+                                <h4>Blog Posts</h4>
+                                <div style="font-size: 32px; font-weight: 600; color: var(--admin-primary);">3</div>
+                                <div>Total posts</div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h4>Gallery Images</h4>
+                                <div style="font-size: 32px; font-weight: 600; color: var(--admin-primary);">8</div>
+                                <div>Total images</div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h4>Programs</h4>
+                                <div style="font-size: 32px; font-weight: 600; color: var(--admin-primary);">5</div>
+                                <div>Active programs</div>
+                            </div>
+                            
+                            <div class="admin-card">
+                                <h4>Impact Stories</h4>
+                                <div style="font-size: 32px; font-weight: 600; color: var(--admin-primary);">3</div>
+                                <div>Success stories</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="admin-section">
+                        <div class="admin-section-header">
+                            <h3>Recent Activity</h3>
+                        </div>
+                        
+                        <div class="admin-card">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Activity</th>
+                                        <th>User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Jun 12, 2025</td>
+                                        <td>Added new blog post</td>
+                                        <td>Admin</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jun 11, 2025</td>
+                                        <td>Updated gallery images</td>
+                                        <td>Admin</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jun 10, 2025</td>
+                                        <td>Updated impact page</td>
+                                        <td>Admin</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Blog Content -->
+                <div class="admin-tab-content" id="blog-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-blog"></i> Blog Management</h2>
+                        <button class="admin-btn" id="add-blog-btn">
+                            <i class="fas fa-plus"></i> Add New Post
+                        </button>
+                    </div>
+                    
+                    <div class="admin-card" id="blog-posts-list">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Our First Skatepark Build Has Begun!</td>
+                                    <td>Jun 10, 2025</td>
+                                    <td><span class="admin-badge admin-badge-success">Published</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-blog-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-blog-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Community Competition Highlights</td>
+                                    <td>May 28, 2025</td>
+                                    <td><span class="admin-badge admin-badge-success">Published</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-blog-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-blog-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>New Equipment Arrives for Youth Program</td>
+                                    <td>May 15, 2025</td>
+                                    <td><span class="admin-badge admin-badge-success">Published</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-blog-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-blog-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="blog-edit-form" style="display: none;">
+                        <div class="admin-card">
+                            <div class="admin-card-header">
+                                <h3>Edit Blog Post</h3>
+                                <button class="admin-btn" id="blog-back-btn">
+                                    <i class="fas fa-arrow-left"></i> Back to List
+                                </button>
+                            </div>
+                            
+                            <form id="blog-form">
+                                <div class="admin-form-group">
+                                    <label for="blog-title">Title</label>
+                                    <input type="text" id="blog-title" name="title" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="blog-date">Date</label>
+                                    <input type="date" id="blog-date" name="date" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="blog-image">Featured Image</label>
+                                    <input type="file" id="blog-image" name="image">
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="blog-content">Content</label>
+                                    <textarea id="blog-content" name="content" required></textarea>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="blog-status">Status</label>
+                                    <select id="blog-status" name="status">
+                                        <option value="published">Published</option>
+                                        <option value="draft">Draft</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                    <button type="button" class="admin-btn admin-btn-danger" id="blog-cancel-btn">Cancel</button>
+                                    <button type="submit" class="admin-btn admin-btn-success">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Content -->
+                <div class="admin-tab-content" id="gallery-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-images"></i> Gallery Management</h2>
+                        <button class="admin-btn" id="add-gallery-btn">
+                            <i class="fas fa-plus"></i> Add New Image
+                        </button>
+                    </div>
+                    
+                    <div class="admin-card" id="gallery-images-list">
+                        <div class="admin-media-grid">
+                            <div class="admin-media-item">
+                                <img src="assets/img/person.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Youth skateboarding action shot</div>
+                            </div>
+                            
+                            <div class="admin-media-item">
+                                <img src="assets/img/2.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Community event group photo</div>
+                            </div>
+                            
+                            <div class="admin-media-item">
+                                <img src="assets/img/3.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Skateboarding skills showcase</div>
+                            </div>
+                            
+                            <div class="admin-media-item">
+                                <img src="assets/img/free-skate-session.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Free skate session</div>
+                            </div>
+                            
+                            <div class="admin-media-item">
+                                <img src="assets/img/4.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Competition highlights</div>
+                            </div>
+                            
+                            <div class="admin-media-item">
+                                <img src="assets/img/5.jpeg" alt="Gallery Image" class="admin-media-img">
+                                <div class="admin-media-overlay">
+                                    <button class="admin-action-btn edit-gallery-btn"><i class="fas fa-edit"></i></button>
+                                    <button class="admin-action-btn delete-gallery-btn"><i class="fas fa-trash"></i></button>
+                                </div>
+                                <div class="admin-media-title">Community celebration</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="gallery-edit-form" style="display: none;">
+                        <div class="admin-card">
+                            <div class="admin-card-header">
+                                <h3>Edit Gallery Image</h3>
+                                <button class="admin-btn" id="gallery-back-btn">
+                                    <i class="fas fa-arrow-left"></i> Back to Gallery
+                                </button>
+                            </div>
+                            
+                            <form id="gallery-form">
+                                <div class="admin-gallery-preview">
+                                    <img id="gallery-preview-img" src="" alt="Preview">
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="gallery-title">Caption</label>
+                                    <input type="text" id="gallery-title" name="title" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="gallery-image">Image</label>
+                                    <input type="file" id="gallery-image" name="image">
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="gallery-alt">Alt Text</label>
+                                    <input type="text" id="gallery-alt" name="alt" required>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                    <button type="button" class="admin-btn admin-btn-danger" id="gallery-cancel-btn">Cancel</button>
+                                    <button type="submit" class="admin-btn admin-btn-success">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Programs Content -->
+                <div class="admin-tab-content" id="programs-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-project-diagram"></i> Programs Management</h2>
+                        <button class="admin-btn" id="add-program-btn">
+                            <i class="fas fa-plus"></i> Add New Program
+                        </button>
+                    </div>
+                    
+                    <div class="admin-card" id="programs-list">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Free Skate Sessions</td>
+                                    <td><span class="admin-badge admin-badge-success">Active</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-program-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-program-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Learn to Skate Programs</td>
+                                    <td><span class="admin-badge admin-badge-success">Active</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-program-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-program-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Community Events & Competitions</td>
+                                    <td><span class="admin-badge admin-badge-success">Active</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-program-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-program-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Youth Mentorship</td>
+                                    <td><span class="admin-badge admin-badge-success">Active</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-program-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-program-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Future Skatepark Project</td>
+                                    <td><span class="admin-badge admin-badge-warning">In Progress</span></td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-program-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-program-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="program-edit-form" style="display: none;">
+                        <div class="admin-card">
+                            <div class="admin-card-header">
+                                <h3>Edit Program</h3>
+                                <button class="admin-btn" id="program-back-btn">
+                                    <i class="fas fa-arrow-left"></i> Back to List
+                                </button>
+                            </div>
+                            
+                            <form id="program-form">
+                                <div class="admin-form-group">
+                                    <label for="program-title">Title</label>
+                                    <input type="text" id="program-title" name="title" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="program-image">Featured Image</label>
+                                    <input type="file" id="program-image" name="image">
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="program-description">Description</label>
+                                    <textarea id="program-description" name="description" required></textarea>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="program-status">Status</label>
+                                    <select id="program-status" name="status">
+                                        <option value="active">Active</option>
+                                        <option value="in-progress">In Progress</option>
+                                        <option value="planned">Planned</option>
+                                        <option value="completed">Completed</option>
+                                    </select>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                    <button type="button" class="admin-btn admin-btn-danger" id="program-cancel-btn">Cancel</button>
+                                    <button type="submit" class="admin-btn admin-btn-success">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Impact Content -->
+                <div class="admin-tab-content" id="impact-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-chart-line"></i> Impact Management</h2>
+                        <button class="admin-btn" id="add-impact-btn">
+                            <i class="fas fa-plus"></i> Add Success Story
+                        </button>
+                    </div>
+                    
+                    <div class="admin-card" id="impact-list">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Person</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>From Streets to Success</td>
+                                    <td>James, Age 17</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-impact-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-impact-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Building Confidence</td>
+                                    <td>Sarah, Age 16</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-impact-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-impact-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Community Leader</td>
+                                    <td>David, Age 20</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-impact-btn"><i class="fas fa-edit"></i></button>
+                                            <button class="admin-action-btn delete-impact-btn"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div id="impact-edit-form" style="display: none;">
+                        <div class="admin-card">
+                            <div class="admin-card-header">
+                                <h3>Edit Success Story</h3>
+                                <button class="admin-btn" id="impact-back-btn">
+                                    <i class="fas fa-arrow-left"></i> Back to List
+                                </button>
+                            </div>
+                            
+                            <form id="impact-form">
+                                <div class="admin-form-group">
+                                    <label for="impact-title">Title</label>
+                                    <input type="text" id="impact-title" name="title" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="impact-person">Person Name & Age</label>
+                                    <input type="text" id="impact-person" name="person" required>
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="impact-image">Photo</label>
+                                    <input type="file" id="impact-image" name="image">
+                                </div>
+                                
+                                <div class="admin-form-group">
+                                    <label for="impact-quote">Quote/Story</label>
+                                    <textarea id="impact-quote" name="quote" required></textarea>
+                                </div>
+                                
+                                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                    <button type="button" class="admin-btn admin-btn-danger" id="impact-cancel-btn">Cancel</button>
+                                    <button type="submit" class="admin-btn admin-btn-success">Save Changes</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Settings Content -->
+                <div class="admin-tab-content" id="settings-content">
+                    <div class="admin-content-header">
+                        <h2><i class="fas fa-cogs"></i> Settings</h2>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Admin Users</h3>
+                        </div>
+                        
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Role</th>
+                                    <th>Last Login</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>admin</td>
+                                    <td>Administrator</td>
+                                    <td>Jun 12, 2025</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-user-btn"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>admin2</td>
+                                    <td>Administrator</td>
+                                    <td>Jun 10, 2025</td>
+                                    <td>
+                                        <div class="admin-actions">
+                                            <button class="admin-action-btn edit-user-btn"><i class="fas fa-edit"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h3>Change Password</h3>
+                        </div>
+                        
+                        <form id="password-form">
+                            <div class="admin-form-group">
+                                <label for="current-password">Current Password</label>
+                                <input type="password" id="current-password" name="current-password" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" name="new-password" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="confirm-password">Confirm New Password</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                            </div>
+                            
+                            <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                                <button type="submit" class="admin-btn admin-btn-success">Update Password</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Sample admin credentials (in a real application, this would be handled server-side)
+        const adminCredentials = [
+            { username: 'admin', password: 'admin123' },
+            { username: 'admin2', password: 'admin123' }
+        ];
+        
+        // DOM Elements
+        const loginSection = document.getElementById('admin-login-section');
+        const mainSection = document.getElementById('admin-main-section');
+        const loginForm = document.getElementById('admin-login-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        
+        // Navigation Links
+        const navLinks = document.querySelectorAll('.admin-nav-link');
+        
+        // Content Tabs
+        const tabContents = document.querySelectorAll('.admin-tab-content');
+        
+        // Blog Management
+        const addBlogBtn = document.getElementById('add-blog-btn');
+        const blogBackBtn = document.getElementById('blog-back-btn');
+        const blogCancelBtn = document.getElementById('blog-cancel-btn');
+        const blogPostsList = document.getElementById('blog-posts-list');
+        const blogEditForm = document.getElementById('blog-edit-form');
+        const editBlogBtns = document.querySelectorAll('.edit-blog-btn');
+        const deleteBlogBtns = document.querySelectorAll('.delete-blog-btn');
+        
+        // Gallery Management
+        const addGalleryBtn = document.getElementById('add-gallery-btn');
+        const galleryBackBtn = document.getElementById('gallery-back-btn');
+        const galleryCancelBtn = document.getElementById('gallery-cancel-btn');
+        const galleryImagesList = document.getElementById('gallery-images-list');
+        const galleryEditForm = document.getElementById('gallery-edit-form');
+        const editGalleryBtns = document.querySelectorAll('.edit-gallery-btn');
+        const deleteGalleryBtns = document.querySelectorAll('.delete-gallery-btn');
+        
+        // Programs Management
+        const addProgramBtn = document.getElementById('add-program-btn');
+        const programBackBtn = document.getElementById('program-back-btn');
+        const programCancelBtn = document.getElementById('program-cancel-btn');
+        const programsList = document.getElementById('programs-list');
+        const programEditForm = document.getElementById('program-edit-form');
+        const editProgramBtns = document.querySelectorAll('.edit-program-btn');
+        const deleteProgramBtns = document.querySelectorAll('.delete-program-btn');
+        
+        // Impact Management
+        const addImpactBtn = document.getElementById('add-impact-btn');
+        const impactBackBtn = document.getElementById('impact-back-btn');
+        const impactCancelBtn = document.getElementById('impact-cancel-btn');
+        const impactList = document.getElementById('impact-list');
+        const impactEditForm = document.getElementById('impact-edit-form');
+        const editImpactBtns = document.querySelectorAll('.edit-impact-btn');
+        const deleteImpactBtns = document.querySelectorAll('.delete-impact-btn');
+        
+        // Login Functionality
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            const user = adminCredentials.find(user => user.username === username && user.password === password);
+            
+            if (user) {
+                loginSection.style.display = 'none';
+                mainSection.style.display = 'block';
+            } else {
+                alert('Invalid username or password!');
+            }
+        });
+        
+        // Logout Functionality
+        logoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            loginSection.style.display = 'block';
+            mainSection.style.display = 'none';
+            
+            // Reset form
+            loginForm.reset();
+        });
+        
+        // Tab Navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(link => link.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all tab contents
+                tabContents.forEach(tab => tab.classList.remove('active'));
+                
+                // Show the target tab content
+                const targetId = this.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // Blog Management
+        if (addBlogBtn) {
+            addBlogBtn.addEventListener('click', function() {
+                blogPostsList.style.display = 'none';
+                blogEditForm.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('blog-form').reset();
+            });
+        }
+        
+        if (blogBackBtn) {
+            blogBackBtn.addEventListener('click', function() {
+                blogPostsList.style.display = 'block';
+                blogEditForm.style.display = 'none';
+            });
+        }
+        
+        if (blogCancelBtn) {
+            blogCancelBtn.addEventListener('click', function() {
+                blogPostsList.style.display = 'block';
+                blogEditForm.style.display = 'none';
+            });
+        }
+        
+        editBlogBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                blogPostsList.style.display = 'none';
+                blogEditForm.style.display = 'block';
+                
+                // In a real application, you would load the blog data here
+                const blogRow = this.closest('tr');
+                const title = blogRow.cells[0].textContent;
+                
+                document.getElementById('blog-title').value = title;
+            });
+        });
+        
+        deleteBlogBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this blog post?')) {
+                    // In a real application, you would delete the blog post here
+                    this.closest('tr').remove();
+                }
+            });
+        });
+        
+        // Gallery Management
+        if (addGalleryBtn) {
+            addGalleryBtn.addEventListener('click', function() {
+                galleryImagesList.style.display = 'none';
+                galleryEditForm.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('gallery-form').reset();
+                document.getElementById('gallery-preview-img').src = '';
+            });
+        }
+        
+        if (galleryBackBtn) {
+            galleryBackBtn.addEventListener('click', function() {
+                galleryImagesList.style.display = 'block';
+                galleryEditForm.style.display = 'none';
+            });
+        }
+        
+        if (galleryCancelBtn) {
+            galleryCancelBtn.addEventListener('click', function() {
+                galleryImagesList.style.display = 'block';
+                galleryEditForm.style.display = 'none';
+            });
+        }
+        
+        editGalleryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                galleryImagesList.style.display = 'none';
+                galleryEditForm.style.display = 'block';
+                
+                // In a real application, you would load the gallery data here
+                const galleryItem = this.closest('.admin-media-item');
+                const img = galleryItem.querySelector('img');
+                const title = galleryItem.querySelector('.admin-media-title').textContent;
+                
+                document.getElementById('gallery-preview-img').src = img.src;
+                document.getElementById('gallery-title').value = title;
+                document.getElementById('gallery-alt').value = img.alt;
+            });
+        });
+        
+        deleteGalleryBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this gallery image?')) {
+                    // In a real application, you would delete the gallery image here
+                    this.closest('.admin-media-item').remove();
+                }
+            });
+        });
+        
+        // Programs Management
+        if (addProgramBtn) {
+            addProgramBtn.addEventListener('click', function() {
+                programsList.style.display = 'none';
+                programEditForm.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('program-form').reset();
+            });
+        }
+        
+        if (programBackBtn) {
+            programBackBtn.addEventListener('click', function() {
+                programsList.style.display = 'block';
+                programEditForm.style.display = 'none';
+            });
+        }
+        
+        if (programCancelBtn) {
+            programCancelBtn.addEventListener('click', function() {
+                programsList.style.display = 'block';
+                programEditForm.style.display = 'none';
+            });
+        }
+        
+        editProgramBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                programsList.style.display = 'none';
+                programEditForm.style.display = 'block';
+                
+                // In a real application, you would load the program data here
+                const programRow = this.closest('tr');
+                const title = programRow.cells[0].textContent;
+                
+                document.getElementById('program-title').value = title;
+            });
+        });
+        
+        deleteProgramBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this program?')) {
+                    // In a real application, you would delete the program here
+                    this.closest('tr').remove();
+                }
+            });
+        });
+        
+        // Impact Management
+        if (addImpactBtn) {
+            addImpactBtn.addEventListener('click', function() {
+                impactList.style.display = 'none';
+                impactEditForm.style.display = 'block';
+                
+                // Reset form
+                document.getElementById('impact-form').reset();
+            });
+        }
+        
+        if (impactBackBtn) {
+            impactBackBtn.addEventListener('click', function() {
+                impactList.style.display = 'block';
+                impactEditForm.style.display = 'none';
+            });
+        }
+        
+        if (impactCancelBtn) {
+            impactCancelBtn.addEventListener('click', function() {
+                impactList.style.display = 'block';
+                impactEditForm.style.display = 'none';
+            });
+        }
+        
+        editImpactBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                impactList.style.display = 'none';
+                impactEditForm.style.display = 'block';
+                
+                // In a real application, you would load the impact data here
+                const impactRow = this.closest('tr');
+                const title = impactRow.cells[0].textContent;
+                const person = impactRow.cells[1].textContent;
+                
+                document.getElementById('impact-title').value = title;
+                document.getElementById('impact-person').value = person;
+            });
+        });
+        
+        deleteImpactBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to delete this success story?')) {
+                    // In a real application, you would delete the impact story here
+                    this.closest('tr').remove();
+                }
+            });
+        });
+        
+        // Form Submissions (in a real application, these would submit to a server)
+        document.getElementById('blog-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Blog post saved successfully!');
+            blogPostsList.style.display = 'block';
+            blogEditForm.style.display = 'none';
+        });
+        
+        document.getElementById('gallery-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gallery image saved successfully!');
+            galleryImagesList.style.display = 'block';
+            galleryEditForm.style.display = 'none';
+        });
+        
+        document.getElementById('program-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Program saved successfully!');
+            programsList.style.display = 'block';
+            programEditForm.style.display = 'none';
+        });
+        
+        document.getElementById('impact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Success story saved successfully!');
+            impactList.style.display = 'block';
+            impactEditForm.style.display = 'none';
+        });
+        
+        document.getElementById('password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const currentPassword = document.getElementById('current-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+            
+            alert('Password updated successfully!');
+            this.reset();
+        });
+        
+        // Image Preview for Gallery
+        document.getElementById('gallery-image').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('gallery-preview-img').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
